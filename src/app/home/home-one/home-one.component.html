@@ -1,0 +1,72 @@
+<div class="container">
+    <div [formGroup]="userForm">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">FirstName:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName='firstName' placeholder="FirstName">
+                <!-- <div class="alert alert-danger" *ngIf="activeForm.controls['firstName'].invalid && activeForm.controls['firstName'].touched">
+              FirstName is required
+         </div> -->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">lastName:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName='lastName' placeholder="Last Name">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Age:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName='age' placeholder="entrer your age">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">PhoneNumber:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName='phoneNumber' placeholder="PhoneNumber">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label><input type="checkbox"> Remember me</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" (click)="save(userForm.value)">{{isUpdate? 'Update': 'Save'}}</button>
+                <button type="reset" class="btn btn-danger" (click)="reset()">reset</button>
+            </div>
+                     
+            <table class="table" *ngIf="sum.length">
+                <thead>
+                    <tr>
+                        <th>S no</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Phone Number</th>
+                        <td>Edit</td>
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of sum">
+                        <td>{{x.id}}</td>
+                        <td>{{x.firstName}}</td>
+                        <td>{{x.lastName}}</td>
+                        <td>{{x.age}}</td>
+                        <td>{{x.phoneNumber}}</td>
+                        <td (click)="editUser(x)">Edit</td>
+                        <td (click)="deleteUser(x)">Delete</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
